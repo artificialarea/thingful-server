@@ -55,3 +55,11 @@ Reviews Endpoints
 ## Schema
 
 <img src="/migrations/erd_thingful.png" alt="Entity Relationship Diagram" width="500px">
+
+<hr />
+
+## Footnotes
+
+[gist: thingful Q&A](https://gist.github.com/artificialarea/0e7fb264a39468a4710cac08543484e7)
+
+
