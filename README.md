@@ -51,3 +51,7 @@ Things Endpoints
 Reviews Endpoints
   POST /api/reviews
 ```
+
+## Schema
+
+<img src="/migrations/erd_thingful.png" alt="Entity Relationship Diagram" width="500px">
