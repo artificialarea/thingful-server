@@ -1,5 +1,9 @@
 # Thingful Server
 
+Pair: Sultana + Sacha
+
+<br />
+
 ## Setting Up
 
 - Install dependencies: `npm install`
