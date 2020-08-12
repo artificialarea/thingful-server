@@ -39,3 +39,15 @@ timezone = 'UTC'
 
 - Start application for development: `npm run dev`
 - Run tests: `npm test`
+
+## Endpoints
+
+```
+Things Endpoints
+  GET /api/things
+  GET /api/things/:thing_id
+  GET /api/things/:thing_id/reviews
+
+Reviews Endpoints
+  POST /api/reviews
+```
