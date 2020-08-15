@@ -4,6 +4,22 @@ Pair: Sultana + Sacha
 
 <br />
 
+## Iterations
+
+### 1. Learning a new codebase 
+src: https://courses.thinkful.com/auth-jwt-v1/checkpoint/2#assignment
+
+branch: **`checkpoint-2`**
+
+<br />
+
+### 2. Protected endpoints 
+src: https://courses.thinkful.com/auth-jwt-v1/checkpoint/3
+
+branch: **`checkpoint-3`**
+
+<br />
+
 ## Setting Up
 
 - Install dependencies: `npm install`
