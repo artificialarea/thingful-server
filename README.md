@@ -14,7 +14,7 @@ branch: **`checkpoint-2`**
 <br />
 
 ### 2. Protected endpoints 
-src: https://courses.thinkful.com/auth-jwt-v1/checkpoint/3
+src: https://courses.thinkful.com/auth-jwt-v1/checkpoint/3#assignment
 
 branch: **`checkpoint-3`**
 
