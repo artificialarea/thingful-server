@@ -1,7 +1,6 @@
 /* eslint-disable indent */
 // TODO: add to express-boilerplate
 
-const bcrypt = require('bcryptjs');
 const AuthService = require('../auth/auth-service');
 
 function requireAuth(req, res, next) {
@@ -30,7 +29,7 @@ function requireAuth(req, res, next) {
             if (!user) {
                 return res.status(401).json({ error: 'Unauthorized request' });
             }
-            return bcrypt.compare(tokenPassword, user.password)
+            return AuthService.compare(tokenPassword, user.password)
                 .then(passwordsMatch => {
                     if (!passwordsMatch) {
                         return res.status(401).json({ error: 'Unauthorized request' });
