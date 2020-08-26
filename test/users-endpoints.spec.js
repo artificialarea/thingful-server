@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs')
 const app = require('../src/app')
 const helpers = require('./test-helpers')
 
-describe.only(`Users Endpoints`, () => {
+describe(`Users Endpoints`, () => {
 
     let db
 
@@ -159,14 +159,8 @@ describe.only(`Users Endpoints`, () => {
                         expect(res.body.nickname).to.eql('')
                         expect(res.body).to.not.have.property('password')
                         expect(res.headers.location).to.eql(`/api/users/${res.body.id}`)
-
-                        // TODO: solve timezone issue
-                        // although my postgresql.conf timezone is set to 'UTC'
-                        // actualDate stubbornly remains in PDT timezone ??? 
-                        // so forcing UTC timezone in actualDate for now until I can troubleshoot
                         const expectedDate = new Date().toLocaleString('en', { timeZone: 'UTC' })
                         const actualDate = new Date(res.body.date_created).toLocaleString() 
-                        // const actualDate = new Date(res.body.date_cr+eated).toLocaleString('en', { timeZone: 'UTC' })
                         expect(actualDate).to.eql(expectedDate)
                     })
                     // need to add more assertions that query the database after POST request has responded
@@ -179,11 +173,8 @@ describe.only(`Users Endpoints`, () => {
                                 expect(row.user_name).to.eql(newUser.user_name)
                                 expect(row.full_name).to.eql(newUser.full_name)
                                 expect(row.nickname).to.eql(null)
-
-                                // TODO: solve timezone issue, again
                                 const expectedDate = new Date().toLocaleString('en', { timeZone: 'UTC' })
                                 const actualDate = new Date(row.date_created).toLocaleString()
-                                // const actualDate = new Date(row.date_created).toLocaleString('en', { timeZone: 'UTC' })
                                 expect(actualDate).to.eql(expectedDate)
 
                                 return bcrypt.compare(newUser.password, row.password)
