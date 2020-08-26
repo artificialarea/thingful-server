@@ -135,6 +135,42 @@ describe.only(`Users Endpoints`, () => {
                     .expect(400, { error: 'Username already taken' })
             });
         })
+
+        context(`Happy path`, () => {
+
+            // Normally might break this up into a suite of distinct unit tests
+            // but for sake of brevity, chaining together in one long test.
+            it(`responds 201, serialized user, storing bcrypted password`, () => {
+                const newUser = {
+                    user_name: 'test user_name',
+                    password: 'aaAA11!!',
+                    full_name: 'test full_name',
+                }
+                return supertest(app)
+                    .post('/api/users')
+                    .send(newUser)
+                    .expect(201)
+                    // this test passes without database query
+                    .expect(res => {
+                        expect(res.body).to.have.property('id')
+                        expect(res.body.user_name).to.eql(newUser.user_name)
+                        expect(res.body.full_name).to.eql(newUser.full_name)
+                        expect(res.body.nickname).to.eql('')
+                        expect(res.body).to.not.have.property('password')
+                        expect(res.headers.location).to.eql(`/api/users/${res.body.id}`)
+
+                        // TODO: solve timezone issue
+                        // although my postgresql.conf timezone is set to 'UTC'
+                        // actualDate stubbornly remains in PDT timezone ??? 
+                        // so forcing UTC timezone in actualDate for now until I can troubleshoot
+                        const expectedDate = new Date().toLocaleString('en', { timeZone: 'UTC' })
+                        const actualDate = new Date(res.body.date_created).toLocaleString() 
+                        // const actualDate = new Date(res.body.date_cr+eated).toLocaleString('en', { timeZone: 'UTC' })
+                        expect(actualDate).to.eql(expectedDate)
+                    })
+            });
+        
+        });
     
     });
 

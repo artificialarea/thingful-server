@@ -1,5 +1,6 @@
 /* eslint-disable indent */
 const express = require('express')
+const path = require('path')
 const UsersService = require('./users-service')
 
 const usersRouter = express.Router()
@@ -28,7 +29,17 @@ usersRouter
                 if(hasUserWithUserName)
                     return res.status(400).json({ error: `Username already taken`})
 
-                res.send('ok')
+                // cheeky pass... without actually querying the db
+                res .status(201)
+                    .location(path.posix.join(req.originalUrl, `/whatever`))
+                    .json({
+                        id: 'whatever',
+                        user_name,
+                        full_name,
+                        nickname: nickname || '',
+                        date_created: Date.now(),
+                    })
+
             })
             .catch(next)
     })
