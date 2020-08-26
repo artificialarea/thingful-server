@@ -36,6 +36,14 @@ branch: **`checkpoint-5`**
 
 <br />
 
+
+### 6. User registration
+src: https://courses.thinkful.com/auth-jwt-v1/checkpoint/6#assignment
+
+branch: **`checkpoint-6`**
+
+<br />
+
 ## Setting Up
 
 - Install dependencies: `npm install`
