@@ -76,6 +76,7 @@ describe(`Auth endpoints`, () => {
                 })
         })
 
+        // Sometimes this test fails... why? > 'Error: expected 200 "OK", got 400 "Bad Request"'
         it(`responds 200 and JWT auth token using secret when valid credentials`, () => {
 
             const userValidCreds = {
