@@ -1,5 +1,6 @@
 /* eslint-disable indent */
 const knex = require('knex')
+const bcrypt = require('bcryptjs')
 const app = require('../src/app')
 const helpers = require('./test-helpers')
 
@@ -185,11 +186,11 @@ describe.only(`Users Endpoints`, () => {
                                 // const actualDate = new Date(row.date_created).toLocaleString('en', { timeZone: 'UTC' })
                                 expect(actualDate).to.eql(expectedDate)
 
-                                // return bcrypt.compare(newUser.password, row.password)
+                                return bcrypt.compare(newUser.password, row.password)
                             })        
-                            // .then(compareMatch => {
-                            //     expect(compareMatch).to.be.true
-                            // })
+                            .then(compareMatch => {
+                                expect(compareMatch).to.be.true
+                            })
                     )
             });
         
